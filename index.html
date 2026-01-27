@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Official portfolio of Raghuvarman, a passionate front-end developer skilled in HTML, CSS, JavaScript. Check out my projects and skills." />
+  <meta name="keywords" content="Frontend Developer, Raghuvarman, Portfolio, HTML, CSS, JavaScript, Projects" />
+  <meta name="author" content="Raghuvarman" />
+  <meta property="og:title" content="raghuvarman | Portfolio" />
+  <meta property="og:description" content="Frontend Developer passionate about web development." />
+  <meta property="og:image" content="https://raghuvarman.netlify.app/" />
+
+  <title>Raghuvarman | CODER.</title>
+
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="Tilda_Icons_14ht_couple.svg" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="image/New folder/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="image/New folder/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="image/New folder/favicon-16x16.png" />
+  <link rel="manifest" href="image/New folder/site.webmanifest" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#11c046",
+            dark: "#000000",
+            darker: "#111111",
+            card: "rgba(20, 20, 20, 0.8)",
+          },
+          fontFamily: {
+            sans: ["Rubik", "sans-serif"],
+          },
+          animation: {
+            'fade-in': 'fadeIn 1s ease-out',
+            'slide-up': 'slideUp 0.8s ease-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(50px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            }
+          }
+        },
+      },
+    };
+  </script>
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #000;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #11c046;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0ea03a;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="bg-dark text-white font-sans antialiased overflow-x-hidden">
+
+  <!-- Loading Overlay -->
+  <div id="loader" class="fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-500">
+    <div class="relative w-16 h-16">
+      <div class="absolute w-full h-full border-4 border-primary rounded-none animate-[spin_1s_linear_infinite]"></div>
+      <div
+        class="absolute w-full h-full border-4 border-black rounded-none animate-[spin_1.5s_linear_infinite_reverse] rotate-45 transform scale-75">
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav
+    class="fixed top-0 left-0 w-full z-40 transition-all duration-300 bg-black/80 backdrop-blur-md border-b border-white/5 py-4"
+    id="navbar">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold tracking-tighter group">
+        <span class="text-white group-hover:text-primary transition-colors">Coder</span>
+        <span class="text-primary">.</span>
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-8">
+        <a href="#home" class="nav-link text-gray-300 hover:text-primary text-sm font-medium transition-colors">Home</a>
+        <a href="#about" class="nav-link text-gray-300 hover:text-primary text-sm font-medium transition-colors">About
+          Me</a>
+        <a href="#skills"
+          class="nav-link text-gray-300 hover:text-primary text-sm font-medium transition-colors">Skills</a>
+        <a href="#projects"
+          class="nav-link text-gray-300 hover:text-primary text-sm font-medium transition-colors">Projects</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-white hover:text-primary transition-colors focus:outline-none">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+      class="hidden absolute top-full left-0 w-full bg-black border-b border-white/10 p-6 flex-col space-y-4 md:hidden">
+      <a href="#home" class="block text-center text-lg text-gray-300 hover:text-primary">Home</a>
+      <a href="#about" class="block text-center text-lg text-gray-300 hover:text-primary">About Me</a>
+      <a href="#skills" class="block text-center text-lg text-gray-300 hover:text-primary">Skills</a>
+      <a href="#projects" class="block text-center text-lg text-gray-300 hover:text-primary">Projects</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 z-0">
+      <img src="image/main.png" alt="Background" class="w-full h-full object-cover opacity-60">
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/20"></div>
+    </div>
+
+    <div class="relative z-10 text-center px-4 max-w-4xl mx-auto reveal active">
+      <h2 class="text-xl md:text-2xl font-light tracking-wide mb-2 text-primary">Welcome</h2>
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 tracking-tight leading-tight">
+        I Am <span class="text-primary relative inline-block">
+          Raghuvarman
+          <svg class="absolute w-full h-3 -bottom-1 left-0 text-primary opacity-50" viewBox="0 0 200 9" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.00025 6.99997C25.7501 3.99991 132.5 -5.19999 198 4.79998" stroke="currentColor" stroke-width="3"
+              stroke-linecap="round" />
+          </svg>
+        </span>
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-200 font-light mt-6 drop-shadow-md">Frontend Specialist & Creative
+        Developer</p>
+
+      <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <a href="#projects"
+          class="px-8 py-3 bg-primary text-black font-semibold rounded-full hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-lg shadow-primary/20">
+          View Work
+        </a>
+        <a href="#contact"
+          class="px-8 py-3 border border-white/40 text-white font-semibold rounded-full hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+          Contact Me
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="py-24 relative bg-black">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="text-primary">About</span> Me</h2>
+        <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+      </div>
+
+      <div class="flex flex-col lg:flex-row items-center gap-12">
+
+        <!-- About Image Placeholder -->
+        <div class="w-full lg:w-5/12 reveal">
+          <div class="relative rounded-2xl overflow-hidden border border-white/10 group">
+            <img src="image/me/photo.jpeg"
+              onerror="this.onerror=null;this.src='https://placehold.co/500x600/111111/11c046?text=Upload+Photo';"
+              alt="About Portrait"
+              class="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+            <!-- Decorative elements -->
+            <div
+              class="absolute -z-10 top-4 -left-4 w-full h-full border-2 border-primary/30 rounded-2xl hidden md:block">
+            </div>
+            <div
+              class="absolute -z-10 -bottom-4 -right-4 w-full h-full border-2 border-white/10 rounded-2xl hidden md:block">
+            </div>
+          </div>
+        </div>
+
+        <!-- Cards Container -->
+        <div class="w-full lg:w-7/12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Card 1 -->
+          <div
+            class="p-6 rounded-2xl bg-card border border-white/5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 group reveal md:col-span-2">
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+              <i class="fas fa-user text-primary text-sm group-hover:text-black"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-3 text-white">Who I Am</h3>
+            <p class="text-gray-400 leading-relaxed text-sm">
+              Hello! I'm Raghuvarman, an aspiring front-end developer passionate about creating beautiful and functional
+              web experiences. While I may be new to the world of professional development, my enthusiasm for coding and
+              dedication to mastering front-end technologies are boundless.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="p-6 rounded-2xl bg-card border border-white/5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 group reveal delay-100">
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+              <i class="fas fa-code text-primary text-sm group-hover:text-black"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-3 text-white">Journey Into Development</h3>
+            <p class="text-gray-400 leading-relaxed text-sm">
+              My journey into web development began 6 Years ago. Since then, I've been on an exciting learning journey,
+              immersing myself in the world of HTML, CSS, and JavaScript.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="p-6 rounded-2xl bg-card border border-white/5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 group reveal delay-200">
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+              <i class="fas fa-rocket text-primary text-sm group-hover:text-black"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-3 text-white">Learning Curve</h3>
+            <p class="text-gray-400 leading-relaxed text-sm">
+              As a fresher, I embrace the learning curve with open arms. I'm constantly seeking opportunities to expand
+              my
+              skill set, whether it's through online courses, coding challenges, or collaborating on projects.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-24 bg-darker relative overflow-hidden">
+    <!-- Decorative Background -->
+    <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none"
+      style="background-image: radial-gradient(#11c046 1px, transparent 1px); background-size: 30px 30px;">
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="text-primary">Skills</span></h2>
+        <p class="text-gray-400 text-sm">Technologies I work with</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+
+        <div class="space-y-8">
+          <!-- HTML5 -->
+          <div class="reveal">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-laptop-code text-2xl text-primary"></i>
+                <span class="font-medium text-gray-200">Frontend Development</span>
+              </div>
+              <span class="text-primary font-bold">95%</span>
+            </div>
+            <div class="w-full bg-gray-800 rounded-full h-2.5 overflow-hidden">
+              <div class="bg-primary h-2.5 rounded-full skill-progress" style="width: 0%" data-width="95%"></div>
+            </div>
+          </div>
+
+          <!-- CorelDraw -->
+          <div class="reveal">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-pen-nib text-2xl text-primary"></i>
+                <span class="font-medium text-gray-200">CorelDraw</span>
+              </div>
+              <span class="text-primary font-bold">75%</span>
+            </div>
+            <div class="w-full bg-gray-800 rounded-full h-2.5 overflow-hidden">
+              <div class="bg-primary h-2.5 rounded-full skill-progress" style="width: 0%" data-width="75%"></div>
+            </div>
+          </div>
+
+          <!-- GIT -->
+          <div class="reveal">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3">
+                <i class="fa-brands fa-github text-2xl text-primary"></i>
+                <span class="font-medium text-gray-200">GIT & GITHUB</span>
+              </div>
+              <span class="text-primary font-bold">80%</span>
+            </div>
+            <div class="w-full bg-gray-800 rounded-full h-2.5 overflow-hidden">
+              <div class="bg-primary h-2.5 rounded-full skill-progress" style="width: 0%" data-width="80%"></div>
+            </div>
+          </div>
+
+          <!-- Python -->
+          <div class="reveal">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3">
+                <i class="fa-brands fa-python text-2xl text-primary"></i>
+                <span class="font-medium text-gray-200">PYTHON</span>
+              </div>
+              <span class="text-primary font-bold">75%</span>
+            </div>
+            <div class="w-full bg-gray-800 rounded-full h-2.5 overflow-hidden">
+              <div class="bg-primary h-2.5 rounded-full skill-progress" style="width: 0%" data-width="75%"></div>
+            </div>
+          </div>
+
+          <!-- Backend -->
+          <div class="reveal">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-server text-2xl text-primary"></i>
+                <span class="font-medium text-gray-200">BACKEND</span>
+              </div>
+              <span class="text-primary font-bold">30%</span>
+            </div>
+            <div class="w-full bg-gray-800 rounded-full h-2.5 overflow-hidden">
+              <div class="bg-primary h-2.5 rounded-full skill-progress" style="width: 0%" data-width="30%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-8">
+          <!-- Blender -->
+          <div class="reveal">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-cube text-2xl text-primary"></i>
+                <span class="font-medium text-gray-200">BLENDER</span>
+              </div>
+              <span class="text-primary font-bold">70%</span>
+            </div>
+            <div class="w-full bg-gray-800 rounded-full h-2.5 overflow-hidden">
+              <div class="bg-primary h-2.5 rounded-full skill-progress" style="width: 0%" data-width="70%"></div>
+            </div>
+          </div>
+
+          <!-- Unity -->
+          <div class="reveal">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3">
+                <i class="fa-brands fa-unity text-2xl text-primary"></i>
+                <span class="font-medium text-gray-200">UNITY</span>
+              </div>
+              <span class="text-primary font-bold">65%</span>
+            </div>
+            <div class="w-full bg-gray-800 rounded-full h-2.5 overflow-hidden">
+              <div class="bg-primary h-2.5 rounded-full skill-progress" style="width: 0%" data-width="65%"></div>
+            </div>
+          </div>
+
+          <!-- Canva -->
+          <div class="reveal">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-palette text-2xl text-primary"></i>
+                <span class="font-medium text-gray-200">CANVA</span>
+              </div>
+              <span class="text-primary font-bold">85%</span>
+            </div>
+            <div class="w-full bg-gray-800 rounded-full h-2.5 overflow-hidden">
+              <div class="bg-primary h-2.5 rounded-full skill-progress" style="width: 0%" data-width="85%"></div>
+            </div>
+          </div>
+
+          <!-- Tailwind -->
+          <div class="reveal">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-wind text-2xl text-primary"></i>
+                <span class="font-medium text-gray-200">TAILWIND</span>
+              </div>
+              <span class="text-primary font-bold">25%</span>
+            </div>
+            <div class="w-full bg-gray-800 rounded-full h-2.5 overflow-hidden">
+              <div class="bg-primary h-2.5 rounded-full skill-progress" style="width: 0%" data-width="25%"></div>
+            </div>
+          </div>
+
+          <!-- C# -->
+          <div class="reveal">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-code text-2xl text-primary"></i>
+                <span class="font-medium text-gray-200">C#</span>
+              </div>
+              <span class="text-primary font-bold">55%</span>
+            </div>
+            <div class="w-full bg-gray-800 rounded-full h-2.5 overflow-hidden">
+              <div class="bg-primary h-2.5 rounded-full skill-progress" style="width: 0%" data-width="55%"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-24 bg-black">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured <span class="text-primary">Projects</span></h2>
+        <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+      </div>
+
+      <!-- Ongoing -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-semibold mb-8 text-white border-l-4 border-primary pl-4">Ongoing Project</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <!-- Project Card 1 -->
+          <div
+            class="group bg-darker rounded-xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 reveal">
+            <div class="relative h-60 overflow-hidden bg-white/5 p-4 flex items-center justify-center">
+              <img src="image/tvlstores.png" alt="Tirunelveli Stores"
+                class="h-full object-contain transform group-hover:scale-105 transition-transform duration-500">
+              <div
+                class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <a href="https://tirunelvelistores.netlify.app" target="_blank"
+                  class="px-6 py-2 bg-primary text-black font-bold rounded-full hover:bg-white transition-colors">
+                  Visit Site
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors">Tirunelveli
+                Stores</h4>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">HTML</span>
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">CSS</span>
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">JS</span>
+              </div>
+              <ul class="text-gray-400 text-sm space-y-2 list-disc list-inside">
+                <li>E-commerce site for Tirunelveli stores</li>
+                <li>Search-enabled product listing</li>
+                <li>Responsive for mobile</li>
+                <li>Currently under development</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Project Card 2 (Ongoing) -->
+          <div
+            class="group bg-darker rounded-xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 reveal delay-100">
+            <div class="relative h-60 overflow-hidden bg-white/5 p-4 flex items-center justify-center">
+              <img src="image/kaftcards.png" alt="Kafty Cards"
+                class="h-full object-contain transform group-hover:scale-105 transition-transform duration-500">
+              <div
+                class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <a href="https://gerous2020.github.io/kaftycards/"
+                  class="px-6 py-2 bg-primary text-black font-bold rounded-full hover:bg-white transition-colors">
+                  Visit Site
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors">Kafty Cards</h4>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">HTML</span>
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">CSS</span>
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">Tailwind</span>
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">NODE JS</span>
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">MONGO DB</span>
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">EXPRESS JS</span>
+              </div>
+              <ul class="text-gray-400 text-sm space-y-2 list-disc list-inside">
+                <li>Digital business card platform</li>
+                <li>Interactive UI</li>
+                <li>Admin dashboards</li>
+                <li>Work in progress</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Finished -->
+      <div>
+        <h3 class="text-2xl font-semibold mb-8 text-white border-l-4 border-primary pl-4">Finished Projects</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <!-- Project Card 2 -->
+          <div
+            class="group bg-darker rounded-xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 reveal">
+            <div class="relative h-60 overflow-hidden bg-white/5 p-4 flex items-center justify-center">
+              <img src="image/kaftytech.png" alt="Kafty Technologies"
+                class="h-full object-contain transform group-hover:scale-105 transition-transform duration-500">
+              <div
+                class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <a href="https://kaftytechnologies.in" target="_blank"
+                  class="px-6 py-2 bg-primary text-black font-bold rounded-full hover:bg-white transition-colors">
+                  Visit Site
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors">Kafty
+                Technologies</h4>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">HTML</span>
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">CSS</span>
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">JS</span>
+              </div>
+              <ul class="text-gray-400 text-sm space-y-2 list-disc list-inside">
+                <li>Corporate site for an IT company</li>
+                <li>Form integrated with Excel for leads</li>
+                <li>Single-page structure</li>
+                <li>Clean and professional layout</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Project Card 3 -->
+          <div
+            class="group bg-darker rounded-xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 reveal delay-100">
+            <div class="relative h-60 overflow-hidden bg-white/5 p-4 flex items-center justify-center">
+              <img src="image/netoriginsindias.png" alt="Netorigins India"
+                class="h-full object-contain transform group-hover:scale-105 transition-transform duration-500">
+              <div
+                class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <a href="https://netoriginsindias.netlify.app" target="_blank"
+                  class="px-6 py-2 bg-primary text-black font-bold rounded-full hover:bg-white transition-colors">
+                  Visit Site
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors">Netorigins India
+              </h4>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">HTML</span>
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">CSS</span>
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">JS</span>
+              </div>
+              <ul class="text-gray-400 text-sm space-y-2 list-disc list-inside">
+                <li>Another IT services company site</li>
+                <li>Excel-based form tracking</li>
+                <li>Service showcase with visuals</li>
+                <li>Multi-page structure</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Project Card 4 (Finished) -->
+          <div
+            class="group bg-darker rounded-xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 reveal delay-200">
+            <div class="relative h-60 overflow-hidden bg-white/5 p-4 flex items-center justify-center">
+              <img src="image/legenz.png" alt="LeGenZ"
+                class="h-full object-contain transform group-hover:scale-105 transition-transform duration-500">
+              <div
+                class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <a href="https://sarma02.github.io/legenz/"
+                  class="px-6 py-2 bg-primary text-black font-bold rounded-full hover:bg-white transition-colors">
+                  Visit Site
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors">LeGenZ</h4>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">HTML</span>
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">CSS</span>
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">JS</span>
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">TAILWIND</span>
+              </div>
+              <ul class="text-gray-400 text-sm space-y-2 list-disc list-inside">
+                <li>Modern website project</li>
+                <li>Responsive design</li>
+                <li>CSS animations</li>
+                <li>Clean Interface</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Project Card 5 (Finished) -->
+          <div
+            class="group bg-darker rounded-xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 reveal delay-300">
+            <div class="relative h-60 overflow-hidden bg-white/5 p-4 flex items-center justify-center">
+              <img src="image/kanavugalacadamy.png" alt="Kanavugal Academy"
+                class="h-full object-contain transform group-hover:scale-105 transition-transform duration-500">
+              <div
+                class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <a href="https://kanavugalacadamy.com" target="_blank"
+                  class="px-6 py-2 bg-primary text-black font-bold rounded-full hover:bg-white transition-colors">
+                  Visit Site
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors">Kanavugal Academy
+              </h4>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">HTML</span>
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">CSS</span>
+                <span class="px-2 py-1 bg-white/5 text-xs rounded text-gray-300">JS</span>
+              </div>
+              <ul class="text-gray-400 text-sm space-y-2 list-disc list-inside">
+                <li>Educational platform</li>
+                <li>Course listing and details</li>
+                <li>User friendly interface</li>
+                <li>Responsive layout</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Creative Portfolio Section -->
+  <section id="creative" class="py-24 bg-darker relative">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Creative <span class="text-primary">Gallery</span></h2>
+        <p class="text-gray-400 text-sm">Logos, Posters & 3D Art</p>
+      </div>
+
+      <!-- Graphic Design Subsection -->
+      <div class="mb-20">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-1 h-8 bg-primary rounded-full"></div>
+          <h3 class="text-2xl font-bold text-white">Logos & Posters</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Logos -->
+          <div
+            class="group relative aspect-square rounded-xl overflow-hidden cursor-pointer border border-white/5 hover:border-primary/50 transition-all duration-300 reveal">
+            <img src="image/logos/logos/WhatsApp Image 2026-01-27 at 7.35.40 PM.jpeg" alt="Logo Design 1"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            <div
+              class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4 text-center">
+              <div>
+                <h4 class="text-primary font-bold text-lg mb-1">Brand Identity</h4>
+                <p class="text-gray-300 text-xs">Logo Design</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="group relative aspect-square rounded-xl overflow-hidden cursor-pointer border border-white/5 hover:border-primary/50 transition-all duration-300 reveal delay-100">
+            <img src="image/logos/logos/WhatsApp Image 2026-01-27 at 7.35.42 PM (1).jpeg" alt="Logo Design 2"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            <div
+              class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4 text-center">
+              <div>
+                <h4 class="text-primary font-bold text-lg mb-1">Modern Logo</h4>
+                <p class="text-gray-300 text-xs">Logo Design</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="group relative aspect-square rounded-xl overflow-hidden cursor-pointer border border-white/5 hover:border-primary/50 transition-all duration-300 reveal delay-200">
+            <img src="image/logos/logos/WhatsApp Image 2026-01-27 at 7.35.42 PM.jpeg" alt="Logo Design 3"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            <div
+              class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4 text-center">
+              <div>
+                <h4 class="text-primary font-bold text-lg mb-1">Minimalist Logo</h4>
+                <p class="text-gray-300 text-xs">Logo Design</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="group relative aspect-square rounded-xl overflow-hidden cursor-pointer border border-white/5 hover:border-primary/50 transition-all duration-300 reveal delay-300">
+            <img src="image/logos/logos/WhatsApp Image 2026-01-27 at 7.35.43 PM.jpeg" alt="Logo Design 4"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            <div
+              class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4 text-center">
+              <div>
+                <h4 class="text-primary font-bold text-lg mb-1">Creative Symbol</h4>
+                <p class="text-gray-300 text-xs">Logo Design</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Posters -->
+          <div
+            class="group relative aspect-square rounded-xl overflow-hidden cursor-pointer border border-white/5 hover:border-primary/50 transition-all duration-300 reveal">
+            <img src="image/logos/WhatsApp Image 2026-01-27 at 7.37.43 PM.jpeg" alt="Poster Design 1"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            <div
+              class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4 text-center">
+              <div>
+                <h4 class="text-primary font-bold text-lg mb-1">Event Poster</h4>
+                <p class="text-gray-300 text-xs">Poster Design</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="group relative aspect-square rounded-xl overflow-hidden cursor-pointer border border-white/5 hover:border-primary/50 transition-all duration-300 reveal delay-100">
+            <img src="image/logos/WhatsApp Image 2026-01-27 at 7.38.02 PM.jpeg" alt="Poster Design 2"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            <div
+              class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4 text-center">
+              <div>
+                <h4 class="text-primary font-bold text-lg mb-1">Marketing Flyer</h4>
+                <p class="text-gray-300 text-xs">Poster Design</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="group relative aspect-square rounded-xl overflow-hidden cursor-pointer border border-white/5 hover:border-primary/50 transition-all duration-300 reveal delay-200">
+            <img src="image/logos/WhatsApp Image 2026-01-27 at 7.38.03 PM.jpeg" alt="Poster Design 3"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            <div
+              class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4 text-center">
+              <div>
+                <h4 class="text-primary font-bold text-lg mb-1">Social Promo</h4>
+                <p class="text-gray-300 text-xs">Poster Design</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="group relative aspect-square rounded-xl overflow-hidden cursor-pointer border border-white/5 hover:border-primary/50 transition-all duration-300 reveal delay-300">
+            <img src="image/logos/WhatsApp Image 2026-01-27 at 7.38.10 PM.jpeg" alt="Poster Design 4"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            <div
+              class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4 text-center">
+              <div>
+                <h4 class="text-primary font-bold text-lg mb-1">Creative Ad</h4>
+                <p class="text-gray-300 text-xs">Poster Design</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blender Subsection -->
+      <div>
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-1 h-8 bg-primary rounded-full"></div>
+          <h3 class="text-2xl font-bold text-white">3D Modeling (Blender)</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+          <!-- Blender Item 1 -->
+          <div
+            class="group relative rounded-xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300 reveal">
+            <div class="aspect-video overflow-hidden">
+              <img src="image/3d/room.png" alt="Isometric Room"
+                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="p-4 bg-card">
+              <h4 class="text-lg font-bold text-white group-hover:text-primary transition-colors">Isometric Room</h4>
+              <p class="text-gray-400 text-sm mt-1">Detailed isometric room design.</p>
+            </div>
+          </div>
+
+          <!-- Blender Item 2 -->
+          <div
+            class="group relative rounded-xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300 reveal delay-100">
+            <div class="aspect-video overflow-hidden">
+              <img src="image/3d/cave.png" alt="Cave Scene"
+                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="p-4 bg-card">
+              <h4 class="text-lg font-bold text-white group-hover:text-primary transition-colors">Mystic Cave</h4>
+              <p class="text-gray-400 text-sm mt-1">Atmospheric cave environment render.</p>
+            </div>
+          </div>
+
+          <!-- Blender Item 3 -->
+          <div
+            class="group relative rounded-xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300 reveal delay-200">
+            <div class="aspect-video overflow-hidden">
+              <img src="image/3d/manwithlight.png" alt="Lighting Study"
+                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="p-4 bg-card">
+              <h4 class="text-lg font-bold text-white group-hover:text-primary transition-colors">Lighting Study</h4>
+              <p class="text-gray-400 text-sm mt-1">Character lighting and composition.</p>
+            </div>
+          </div>
+
+          <!-- Blender Item 4 -->
+          <div
+            class="group relative rounded-xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300 reveal delay-300">
+            <div class="aspect-video overflow-hidden">
+              <img src="image/3d/untitled.png" alt="Abstract 3D Art"
+                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="p-4 bg-card">
+              <h4 class="text-lg font-bold text-white group-hover:text-primary transition-colors">Abstract Mockup</h4>
+              <p class="text-gray-400 text-sm mt-1">Creative abstract 3D composition.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="bg-darker pt-20 pb-10 relative overflow-hidden">
+    <!-- Wave SVG -->
+
+
+    <div class="max-w-7xl mx-auto px-6 text-center z-10 relative">
+
+      <!-- Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 border-b border-white/10 pb-12">
+        <div class="stat-item reveal">
+          <span class="block text-4xl md:text-5xl font-bold text-primary counter" data-target="5">0</span>
+          <p class="text-gray-400 mt-2 text-sm uppercase tracking-wider">Projects Done</p>
+        </div>
+        <div class="stat-item reveal delay-100">
+          <span class="block text-4xl md:text-5xl font-bold text-primary counter" data-target="3">0</span>
+          <p class="text-gray-400 mt-2 text-sm uppercase tracking-wider">Years Experience</p>
+        </div>
+        <div class="stat-item reveal delay-200">
+          <span class="block text-4xl md:text-5xl font-bold text-primary counter" data-target="4">0</span>
+          <p class="text-gray-400 mt-2 text-sm uppercase tracking-wider">Happy Clients</p>
+        </div>
+      </div>
+
+      <!-- Social Links -->
+      <h2 class="text-2xl font-bold text-white mb-8">Let's Connect</h2>
+      <div class="flex justify-center gap-6 mb-12">
+        <a href="https://www.facebook.com/raghu002" target="_blank"
+          class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-black transition-all duration-300 hover:-translate-y-1">
+          <i class="fa-brands fa-facebook text-xl"></i>
+        </a>
+        <a href="https://www.instagram.com/_drouser_boy_" target="_blank"
+          class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-black transition-all duration-300 hover:-translate-y-1">
+          <i class="fa-brands fa-instagram text-xl"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/raghuvarmanm" target="_blank"
+          class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-black transition-all duration-300 hover:-translate-y-1">
+          <i class="fa-brands fa-linkedin text-xl"></i>
+        </a>
+        <a href="mailto:kliadeveloper@gmail.com" target="_blank"
+          class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-black transition-all duration-300 hover:-translate-y-1">
+          <i class="fa-solid fa-envelope text-xl"></i>
+        </a>
+      </div>
+
+      <div class="text-gray-500 text-sm">
+        <p>© <span class="datenew">2024</span> Raghuvarman. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
